@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  postgres:
+    build: ./db/postgres
+    container_name: orders_postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: orders_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./db/migrations:/docker-entrypoint-initdb.d/
